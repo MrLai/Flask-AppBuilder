@@ -169,10 +169,10 @@ class SQLAInterface(BaseInterface):
 
         # MSSQL exception page/limit must have an order by
         if (
-                page
-                and page_size
-                and not order_column
-                and self.session.bind.dialect.name == "mssql"
+            page
+            and page_size
+            and not order_column
+            and self.session.bind.dialect.name == "mssql"
         ):
             pk_name = self.get_pk_name()
             query = query.order_by(pk_name)
@@ -586,7 +586,6 @@ class SQLAInterface(BaseInterface):
                     and (not self.is_fk(tmp_prop))
                     and (not self.is_image(col_name))
                     and (not self.is_file(col_name))
-                    and (not self.is_boolean(col_name))
                 ):
                     ret_lst.append(col_name)
             else:
